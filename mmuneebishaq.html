@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>M Muneeb Ishaq — Full-Stack .NET Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f5f5f3;color:#1a1a1a;font-size:14px;line-height:1.6}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,245,243,0.92);backdrop-filter:blur(10px);border-bottom:1px solid #e8e8e5;padding:0 2rem}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-logo{width:34px;height:34px;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;text-decoration:none;flex-shrink:0}
+.nav-menu{display:flex;gap:0}
+.nav-menu a{text-decoration:none;color:#666;font-size:13px;font-weight:500;padding:6px 14px;border-radius:6px;transition:color .2s}
+.nav-menu a:hover{color:#1a1a1a}
+.nav-cta{background:#1a1a1a;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;display:flex;align-items:center;gap:6px}
+.nav-cta:hover{background:#333}
+.container{max-width:960px;margin:0 auto;padding:0 2rem}
+.hero{padding:100px 0 48px;text-align:center}
+.available-badge{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #e8e8e5;border-radius:20px;padding:4px 14px;font-size:12px;color:#555;margin-bottom:22px}
+.available-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:38px;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px}
+.hero .role{font-size:15px;color:#888;margin-bottom:10px}
+.hero .tagline{font-size:13px;color:#aaa;margin-bottom:28px}
+.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:#1a1a1a;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-secondary{background:#fff;color:#1a1a1a;border:1px solid #e0e0dc;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary:hover{background:#333}
+.btn-secondary:hover{background:#f9f9f7}
+.section{margin-bottom:16px}
+.card{background:#fff;border:1px solid #e8e8e5;border-radius:16px;overflow:hidden}
+.profile-grid{display:grid;grid-template-columns:200px 1fr;min-height:220px}
+.profile-photo{background:linear-gradient(135deg,#d4d4d0 0%,#c0c0bc 100%);display:flex;align-items:center;justify-content:center}
+.profile-photo-initials{font-size:52px;font-weight:700;color:#888}
+.profile-content{padding:28px}
+.block-icon{width:32px;height:32px;border-radius:8px;background:#f5f5f3;border:1px solid #e8e8e5;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.block-icon svg{width:16px;height:16px;color:#666}
+.profile-content h2{font-size:18px;font-weight:600;margin-bottom:10px}
+.profile-content p{font-size:13.5px;color:#555;line-height:1.7;margin-bottom:14px}
+.location-row{display:flex;align-items:center;gap:6px;font-size:12px;color:#888}
+.worked-with{padding:20px 28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid #f0f0ec}
+.worked-with-label{font-size:12px;color:#999;font-weight:500;white-space:nowrap}
+.logos-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.logo-pill{background:#f5f5f3;border:1px solid #e8e8e5;border-radius:8px;padding:5px 12px;font-size:11.5px;font-weight:600;color:#666}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#f0f0ec}
+.service-item{background:#fff;padding:24px 28px}
+.service-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.service-icon svg{width:18px;height:18px}
+.service-name{font-size:14px;font-weight:600;margin-bottom:6px}
+.service-desc{font-size:12.5px;color:#777;line-height:1.6;margin-bottom:14px}
+.service-tags{display:flex;flex-wrap:wrap;gap:6px}
+.stag{font-size:11px;padding:3px 8px;border-radius:10px;font-weight:500}
+
+/* SECTION HEADER */
+.section-header{display:flex;align-items:flex-start;gap:16px;padding:28px 28px 20px}
+.section-header-text h2{font-size:18px;font-weight:600;margin-bottom:6px}
+.section-header-text p{font-size:13px;color:#777}
+
+/* EXP */
+.exp-dot-marker{width:10px;height:10px;border-radius:50%;background:#1a1a1a;border:2px solid #e8e8e5;flex-shrink:0;margin-top:5px}
+.exp-list{padding:0 28px 28px}
+.exp-item{display:grid;grid-template-columns:1fr auto;gap:16px;padding:16px 0;border-top:1px solid #f0f0ec}
+.exp-item:first-child{border-top:none}
+.exp-left{display:flex;gap:12px}
+.exp-title{font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px}
+.exp-meta{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.exp-company{font-size:13px;color:#555}
+.exp-dot{width:3px;height:3px;border-radius:50%;background:#bbb}
+.exp-type{font-size:12px;color:#888;background:#f5f5f3;border:1px solid #e8e8e5;padding:2px 8px;border-radius:10px}
+.exp-desc{font-size:13px;color:#666;line-height:1.65;max-width:520px}
+.exp-date{display:flex;align-items:center;gap:5px;font-size:12px;color:#999;white-space:nowrap}
+.exp-date svg{width:12px;height:12px}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f0f0ec}
+.project-item{background:#fff;padding:24px 28px}
+.project-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 10px;border-radius:10px;margin-bottom:12px}
+.project-name{font-size:14px;font-weight:600;margin-bottom:6px}
+.project-desc{font-size:12.5px;color:#777;line-height:1.6;margin-bottom:14px}
+.project-stack{display:flex;flex-wrap:wrap;gap:6px}
+.pstack{font-size:11px;background:#f5f5f3;border:1px solid #e8e8e5;color:#666;padding:2px 8px;border-radius:8px}
+
+/* SKILLS */
+.skills-block{padding:0 28px 28px}
+.skill-group{margin-bottom:24px}
+.skill-group:last-child{margin-bottom:0}
+.skill-group-title{font-size:14px;font-weight:600;margin-bottom:12px;color:#444}
+.chips-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:flex;align-items:center;gap:5px;background:#f5f5f3;border:1px solid #e8e8e5;padding:5px 12px;border-radius:20px;font-size:12.5px;color:#555}
+.chip svg{width:11px;height:11px;color:#22c55e;flex-shrink:0}
+
+/* LICENSES */
+.licenses-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f0f0ec;border-top:1px solid #f0f0ec}
+.license-item{background:#fff;padding:20px 28px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.license-name{font-size:14px;font-weight:600;margin-bottom:4px}
+.license-meta{font-size:12px;color:#888}
+.btn-cred{background:#f5f5f3;border:1px solid #e8e8e5;color:#555;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:5px;text-decoration:none}
+.btn-cred:hover{background:#eee}
+
+/* LANGUAGES */
+.lang-list{padding:0 28px 28px}
+.lang-item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px solid #f0f0ec}
+.lang-item:first-child{border-top:none}
+.lang-name{font-size:14px;font-weight:600}
+.lang-level{font-size:13px;color:#888}
+
+/* RECS */
+.rec-list{padding:0 28px 28px}
+.rec-item{padding:20px;border-radius:10px;margin-bottom:12px;border-left:3px solid #22c55e;background:#f9fef9}
+.rec-item.blue{border-left-color:#3b82f6;background:#f8faff}
+.rec-item:last-child{margin-bottom:0}
+.rec-name{font-size:14px;font-weight:600}
+.rec-role-date{display:flex;align-items:center;gap:6px;font-size:12px;color:#888;margin-top:2px;margin-bottom:10px}
+.rec-text{font-size:13px;color:#666;line-height:1.65}
+
+/* CONTACT */
+.contact-section{background:#1a1a1a;border-radius:16px;padding:48px 28px 32px;text-align:center;margin-bottom:16px}
+.contact-avatar{width:56px;height:56px;border-radius:50%;background:#333;border:3px solid #444;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700;margin:0 auto 20px}
+.contact-section h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:6px}
+.contact-section p{font-size:14px;color:#888;margin-bottom:24px}
+.btn-send-email{background:#fff;color:#1a1a1a;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:8px;text-decoration:none;margin-bottom:20px}
+.btn-send-email:hover{background:#f0f0f0}
+.socials{display:flex;justify-content:center;gap:10px;margin-bottom:32px}
+.social-btn{width:40px;height:40px;border-radius:10px;background:#2a2a2a;border:1px solid #333;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;transition:background .2s}
+.social-btn:hover{background:#333}
+.social-btn svg{width:18px;height:18px;color:#aaa}
+.form-card{background:#fff;border:1px solid #e8e8e5;border-radius:16px;overflow:hidden;margin-bottom:16px}
+.form-inner{padding:28px}
+.form-inner h2{font-size:18px;font-weight:600;margin-bottom:6px}
+.form-inner p{font-size:13px;color:#777;margin-bottom:20px}
+.form-group{margin-bottom:12px}
+input.form-input,textarea.form-input{width:100%;padding:10px 14px;border:1px solid #e0e0dc;border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;background:#fafafa;outline:none;transition:border .2s;resize:none}
+input.form-input:focus,textarea.form-input:focus{border-color:#1a1a1a;background:#fff}
+.btn-submit{background:#1a1a1a;color:#fff;border:none;padding:11px 24px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;width:100%;margin-top:4px}
+.btn-submit:hover{background:#333}
+.success-msg{display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:14px;text-align:center;font-size:13px;color:#166534;margin-top:12px}
+.footer{display:flex;justify-content:space-between;align-items:center;padding:16px 0 32px;font-size:12px;color:#aaa}
+.footer a{color:#aaa;text-decoration:none}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.mobile-nav{display:none;position:fixed;top:56px;left:0;right:0;background:#fff;border-bottom:1px solid #e8e8e5;z-index:99;padding:12px}
+.mobile-nav a{display:block;padding:10px 14px;font-size:14px;color:#555;text-decoration:none;border-radius:8px}
+@media(max-width:700px){
+  .nav-menu{display:none}
+  .nav-hamburger{display:block}
+  .profile-grid{grid-template-columns:1fr}
+  .profile-photo{height:160px}
+  .licenses-grid,.projects-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .exp-item{grid-template-columns:1fr}
+  .exp-date{display:none}
+  .hero h1{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">MI</a>
+    <nav class="nav-menu">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+    <a href="#reviews">Reviews</a>
+      <a href="#skills">Skills</a>
+    </nav>
+    <a href="#contact" class="nav-cta">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      Hire Me
+    </a>
+    <button class="nav-hamburger" id="hamburger">
+      <svg width="20" height="20" fill="none" stroke="#333" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home">Home</a>
+  <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+    <a href="#reviews">Reviews</a>
+
+  <a href="#skills">Skills</a>
+  <a href="#contact">Hire Me</a>
+</div>
+
+<div class="container">
+
+  <section class="hero" id="home">
+    <div class="available-badge">
+      <span class="available-dot"></span>
+      Available for Projects
+    </div>
+    <h1>M Muneeb Ishaq</h1>
+    <p class="role">Full-Stack .NET Developer &amp; Web Design to Code Expert</p>
+    <p class="tagline">Turning Figma designs into production-ready web apps · Available worldwide</p>
+    <div class="hero-btns">
+      <a href="https://www.upwork.com/freelancers/~01c97cff36c609e0eb" target="_blank" class="btn-primary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.545-1.14-2.545-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+        Hire on Upwork
+      </a>
+      <a href="/cdn-cgi/l/email-protection#177a7a62797272757e647f7666262657707a767e7b3974787a" class="btn-secondary">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+        Send Email
+      </a>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="section" id="profile">
+    <div class="card">
+      <div class="profile-grid">
+        <div class="profile-photo">
+          <span class="profile-photo-initials">MI</span>
+        </div>
+        <div class="profile-content">
+          <div class="block-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h2>About Me</h2>
+          <p>Full-Stack Developer with 5+ years of experience delivering high-quality web solutions for clients. I specialize in converting Figma &amp; design files into pixel-perfect, fully functional web applications using ASP.NET Core, C#, and modern frontend tools. Whether it's a customer-facing portal, enterprise dashboard, or REST API backend — I deliver clean, scalable, and maintainable code on time.</p>
+          <div class="location-row">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Based in Lahore, Pakistan · Works with clients worldwide
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="card">
+      <div class="section-header">
+        <div class="block-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M3 15h6"/></svg>
+        </div>
+        <div class="section-header-text">
+          <h2>Services</h2>
+          <p>What I build for international clients — from design to deployment.</p>
+        </div>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-item">
+          <div class="service-icon" style="background:#f0fdf4">
+            <svg fill="none" stroke="#16a34a" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9l3 3-3 3M13 15h3"/></svg>
+          </div>
+          <div class="service-name">Figma / Design to Code</div>
+          <div class="service-desc">Pixel-perfect conversion of Figma, Adobe XD, Sketch, or PSD designs into responsive, production-ready HTML/CSS or Razor views.</div>
+          <div class="service-tags">
+            <span class="stag" style="background:#f0fdf4;color:#166534">Figma</span>
+            <span class="stag" style="background:#f0fdf4;color:#166534">HTML/CSS</span>
+            <span class="stag" style="background:#f0fdf4;color:#166534">Bootstrap</span>
+            <span class="stag" style="background:#f0fdf4;color:#166534">Responsive</span>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon" style="background:#eff6ff">
+            <svg fill="none" stroke="#2563eb" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div class="service-name">Full-Stack Web Apps</div>
+          <div class="service-desc">End-to-end development of business web applications — dashboards, portals, admin panels — using ASP.NET Core MVC and Entity Framework.</div>
+          <div class="service-tags">
+            <span class="stag" style="background:#eff6ff;color:#1e40af">ASP.NET Core</span>
+            <span class="stag" style="background:#eff6ff;color:#1e40af">C#</span>
+            <span class="stag" style="background:#eff6ff;color:#1e40af">SQL Server</span>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon" style="background:#fdf4ff">
+            <svg fill="none" stroke="#9333ea" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="19" cy="15" r="3"/><path d="M22 18l-1.5-1.5"/></svg>
+          </div>
+          <div class="service-name">REST API Development</div>
+          <div class="service-desc">Scalable, secure Web APIs with authentication, role-based access, Swagger docs, and clean CQRS/repository architecture.</div>
+          <div class="service-tags">
+            <span class="stag" style="background:#fdf4ff;color:#6b21a8">Web API</span>
+            <span class="stag" style="background:#fdf4ff;color:#6b21a8">JWT Auth</span>
+            <span class="stag" style="background:#fdf4ff;color:#6b21a8">Swagger</span>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon" style="background:#fff7ed">
+            <svg fill="none" stroke="#ea580c" stroke-width="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+          </div>
+          <div class="service-name">Database Design &amp; Optimization</div>
+          <div class="service-desc">SQL Server schema design, T-SQL stored procedures, query optimization, indexing, and EF Core migrations for high-performance apps.</div>
+          <div class="service-tags">
+            <span class="stag" style="background:#fff7ed;color:#9a3412">SQL Server</span>
+            <span class="stag" style="background:#fff7ed;color:#9a3412">T-SQL</span>
+            <span class="stag" style="background:#fff7ed;color:#9a3412">EF Core</span>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon" style="background:#fefce8">
+            <svg fill="none" stroke="#ca8a04" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="service-name">Legacy .NET Upgrades</div>
+          <div class="service-desc">Migrating older .NET Framework / ASP.NET MVC apps to modern .NET Core with improved performance, security, and maintainability.</div>
+          <div class="service-tags">
+            <span class="stag" style="background:#fefce8;color:#854d0e">.NET Migration</span>
+            <span class="stag" style="background:#fefce8;color:#854d0e">Refactoring</span>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon" style="background:#f0f9ff">
+            <svg fill="none" stroke="#0284c7" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="service-name">Landing Pages &amp; Portfolios</div>
+          <div class="service-desc">Clean, fast, SEO-friendly landing pages and portfolio sites coded from design files — delivered as standalone HTML or integrated into your CMS.</div>
+          <div class="service-tags">
+            <span class="stag" style="background:#f0f9ff;color:#075985">HTML</span>
+            <span class="stag" style="background:#f0f9ff;color:#075985">CSS</span>
+            <span class="stag" style="background:#f0f9ff;color:#075985">JavaScript</span>
+            <span class="stag" style="background:#f0f9ff;color:#075985">SEO</span>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon" style="background:#f0fdf4">
+            <svg fill="none" stroke="#16a34a" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          </div>
+          <div class="service-name">No-Code Websites</div>
+          <div class="service-desc">Professional business websites built on Webflow, WordPress, or Wix — with CMS, animations, SEO optimization, and client-editable content. No coding needed from your side.</div>
+          <div class="service-tags">
+            <span class="stag" style="background:#f0fdf4;color:#166534">Webflow</span>
+            <span class="stag" style="background:#f0fdf4;color:#166534">WordPress</span>
+            <span class="stag" style="background:#f0fdf4;color:#166534">Wix</span>
+            <span class="stag" style="background:#f0fdf4;color:#166534">Framer</span>
+            <span class="stag" style="background:#f0fdf4;color:#166534">CMS</span>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon" style="background:#fff7ed">
+            <svg fill="none" stroke="#ea580c" stroke-width="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/><path d="M15 17.5l2 2 4-4"/></svg>
+          </div>
+          <div class="service-name">Database Query &amp; Optimization</div>
+          <div class="service-desc">Expert T-SQL query writing, stored procedure development, index tuning, slow-query diagnosis, and schema design for SQL Server and PostgreSQL databases.</div>
+          <div class="service-tags">
+            <span class="stag" style="background:#fff7ed;color:#9a3412">T-SQL</span>
+            <span class="stag" style="background:#fff7ed;color:#9a3412">Stored Procs</span>
+            <span class="stag" style="background:#fff7ed;color:#9a3412">Indexing</span>
+            <span class="stag" style="background:#fff7ed;color:#9a3412">Query Tuning</span>
+            <span class="stag" style="background:#fff7ed;color:#9a3412">PostgreSQL</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="card">
+      <div class="section-header">
+        <div class="block-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="section-header-text">
+          <h2>Key Projects</h2>
+          <p>Selected client work across industries.</p>
+        </div>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-item">
+          <div class="project-badge" style="background:#eff6ff;color:#1e40af">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Healthcare
+          </div>
+          <div class="project-name">MaximizeMD — Medical Billing Solution</div>
+          <div class="project-desc">End-to-end medical billing web app with patient management, insurance claim workflows, and real-time reporting dashboards.</div>
+          <div class="project-stack">
+            <span class="pstack">ASP.NET Core</span>
+            <span class="pstack">SQL Server</span>
+            <span class="pstack">EF Core</span>
+            <span class="pstack">SSRS</span>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-badge" style="background:#fdf4ff;color:#6b21a8">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            SaaS / Compliance</div>
+          <div class="project-desc">Built a full Bloctel compliance SaaS from scratch: dashboard UI, auth &amp; DB integration, ZeroBounce &amp; Mailjet API connections, call recording management, on-demand PDF generation, team management, IP whitelisting, contract termination flows, agent performance analytics, and a consent-based registration flow with role-segregated views (Admin / Supervisor / Agent).</div>
+          <div class="project-stack">
+            <span class="pstack">Supabase</span>
+            <span class="pstack">ZeroBounce API</span>
+            <span class="pstack">Mailjet API</span>
+            <span class="pstack">REST API</span>
+            <span class="pstack">RBAC Auth</span>
+            <span class="pstack">PDF Generation</span>
+            <span class="pstack">Data Viz</span>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-badge" style="background:#fff7ed;color:#9a3412">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            E-Commerce
+          </div>
+          <div class="project-name">Multi-Vendor Marketplace</div>
+          <div class="project-desc">Full-featured marketplace with vendor dashboards, product listings, order management, and admin control panel.</div>
+          <div class="project-stack">
+            <span class="pstack">ASP.NET Core</span>
+            <span class="pstack">EF Core</span>
+            <span class="pstack">Razor Pages</span>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-badge" style="background:#f0fdf4;color:#166534">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            No-Code
+          </div>
+          <div class="project-name">Webflow Business Website</div>
+          <div class="project-desc">Responsive business website built in Webflow with CMS collections, animations, SEO setup, and client-editable content blocks.</div>
+          <div class="project-stack">
+            <span class="pstack">Webflow</span>
+            <span class="pstack">CMS</span>
+            <span class="pstack">Custom CSS</span>
+            <span class="pstack">SEO</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="card">
+      <div class="section-header">
+        <div class="block-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        </div>
+        <div class="section-header-text">
+          <h2>Work Experience</h2>
+          <p>5+ years delivering full-stack solutions for real-world clients.</p>
+        </div>
+      </div>
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <div class="exp-dot-marker"></div>
+            <div>
+              <div class="exp-title">Software Engineer</div>
+              <div class="exp-meta">
+                <span class="exp-company">EpicSoft Technologies</span>
+                <span class="exp-dot"></span>
+                <span class="exp-type">Full-Time</span>
+              </div>
+              <p class="exp-desc">Full-stack developer converting Figma UI designs into functional applications. Built REST APIs with ASP.NET Core and Entity Framework using CQRS and repository patterns. Implemented role-based authentication, approval workflows, and email notification systems.</p>
+            </div>
+          </div>
+          <div class="exp-date">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            2023 – Present
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <div class="exp-dot-marker"></div>
+            <div>
+              <div class="exp-title">Backend Developer Intern</div>
+              <div class="exp-meta">
+                <span class="exp-company">SparkoSol</span>
+                <span class="exp-dot"></span>
+                <span class="exp-type">Internship</span>
+              </div>
+              <p class="exp-desc">Developed web pages using HTML, CSS, Bootstrap, and JavaScript. Built a fully functional blog platform with ASP.NET Core and SQL Server, handling user authentication, content management, and database integration.</p>
+            </div>
+          </div>
+          <div class="exp-date">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            2022 – 2023
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- REVIEWS / RECOMMENDATIONS -->
+  <section class="section" id="reviews">
+    <div class="card">
+      <div class="section-header">
+        <div class="block-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="section-header-text">
+          <h2>Client Reviews</h2>
+          <p>Feedback from clients on Upwork and direct engagements.</p>
+        </div>
+      </div>
+      <div class="rec-list">
+
+        <div class="rec-item">
+          <div class="rec-name">⭐⭐⭐⭐⭐ — Verified Upwork Client</div>
+          <div class="rec-role-date">
+            <span>Upwork · LEXA — Subscription Platform Enhancement &amp; Integration</span>
+            <span class="exp-dot"></span>
+          </div>
+          <p class="rec-text">"Muneeb was initially hired to rework an existing SaaS application, but he quickly adapted to a completely new scope and ended up working on a brand-new app from scratch. His ability to adjust to changing requirements while maintaining high-quality work is truly impressive. He is highly knowledgeable, proactive, and extremely reliable. One of his strongest qualities is his excellent communication: he shares daily updates on progress, raises blockers early, and always asks the right questions to ensure he implements the best possible solution rather than just the quickest fix. Muneeb is also very flexible and takes ownership of his work, which makes collaboration smooth and efficient. It's rare to find a developer who combines strong technical expertise with such professionalism and dedication. I strongly recommend Muneeb to anyone looking for a top-notch full-stack developer, and I look forward to working with him again on future projects."</p>
+        </div>
+
+        <div class="rec-item blue">
+          <div class="rec-name">⭐⭐⭐⭐⭐ — Healthcare Client</div>
+          <div class="rec-role-date">
+            <span>Medical Billing Platform</span>
+            <span class="exp-dot"></span>
+          </div>
+          <p class="rec-text">Muneeb delivered an outstanding medical billing web app. His ASP.NET Core expertise is top-tier — clean code, on-time delivery, and great communication throughout. Highly recommended for any .NET project.</p>
+        </div>
+
+        <div class="rec-item blue">
+          <div class="rec-name">⭐⭐⭐⭐⭐ — Business Client </div>
+          <div class="rec-role-date">
+            <span>Upwork · No-Code Website (Webflow)</span>
+            <span class="exp-dot"></span>
+            <span>2024</span>
+          </div>
+          <p class="rec-text">Needed a professional Webflow site built quickly. Muneeb delivered in 3 days — pixel-perfect, mobile responsive, and with CMS set up so my team could manage content. 10/10.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="card">
+      <div class="section-header">
+        <div class="block-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="section-header-text">
+          <h2>Technical Skills</h2>
+          <p>Core technologies I use to deliver production-ready solutions.</p>
+        </div>
+      </div>
+      <div class="skills-block">
+
+        <div class="skill-group">
+          <div class="skill-group-title">Backend Development</div>
+          <div class="chips-row">
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>ASP.NET Core</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>C#</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Web API</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Entity Framework Core</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>CQRS Pattern</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Repository Pattern</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>JWT Auth</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>SignalR</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Database & Query</div>
+          <div class="chips-row">
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>SQL Server</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>T-SQL</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Stored Procedures</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Query Optimization</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Indexing</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Database Migrations</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Frontend & Design-to-Code</div>
+          <div class="chips-row">
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>HTML5 / CSS3</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>JavaScript</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bootstrap</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>jQuery</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Figma to HTML</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Razor Views</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">No-Code & CMS Platforms</div>
+          <div class="chips-row">
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Webflow</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>WordPress</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wix</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Elementor</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Framer</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Tools & DevOps</div>
+          <div class="chips-row">
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Git / GitHub</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Visual Studio</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Swagger / Postman</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Azure DevOps</span>
+            <span class="chip"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>IIS Deployment</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS / LICENSES -->
+  <section class="section" id="certifications">
+    <div class="card">
+      <div class="section-header">
+        <div class="block-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <div class="section-header-text">
+          <h2>Licenses &amp; Certifications</h2>
+          <p>Professional credentials and completed training.</p>
+        </div>
+      </div>
+      <div class="licenses-grid">
+
+        <div class="license-item">
+          <div>
+            <div class="license-name">ASP.NET Core Developer</div>
+            <div class="license-meta">Microsoft Learn · 2023</div>
+          </div>
+          
+        </div>
+
+        <div class="license-item">
+          <div>
+            <div class="license-name">SQL Server Query Tuning</div>
+            <div class="license-meta">Udemy · 2022</div>
+          </div>
+        
+        </div>
+
+        <div class="license-item">
+          <div>
+            <div class="license-name">Webflow Expert Certification</div>
+            <div class="license-meta">Webflow University · 2024</div>
+          </div>
+         
+        </div>
+
+        <div class="license-item">
+          <div>
+            <div class="license-name">C# Intermediate to Advanced</div>
+            <div class="license-meta">Pluralsight · 2022</div>
+          </div>
+        
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="section" id="languages">
+    <div class="card">
+      <div class="section-header">
+        <div class="block-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+        </div>
+        <div class="section-header-text">
+          <h2>Languages</h2>
+          <p>Communication capabilities for international collaboration.</p>
+        </div>
+      </div>
+      <div class="lang-list">
+        <div class="lang-item">
+          <span class="lang-name">English</span>
+          <span class="lang-level">Professional Proficiency</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Urdu</span>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Punjabi</span>
+          <span class="lang-level">Native</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-avatar">MI</div>
+    <h2>Let's Work Together</h2>
+    <p>Available for freelance projects worldwide. Response within 24 hours.</p>
+    <a href="mailto:muneeb.dev@email.com" class="btn-send-email">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      Send Email
+    </a>
+    <div class="socials">
+      <a href="https://www.upwork.com/freelancers/~01c97cff36c609e0eb" target="_blank" class="social-btn" title="Upwork">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#aaa"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.545-1.14-2.545-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <div class="form-card">
+    <div class="form-inner">
+      <h2>Send a Message</h2>
+      <p>Fill in the form and I'll get back to you within 24 hours.</p>
+      <div class="form-group">
+        <input class="form-input" type="text" id="nameInput" placeholder="Your Name" />
+      </div>
+      <div class="form-group">
+        <input class="form-input" type="email" id="emailInput" placeholder="Your Email" />
+      </div>
+      <div class="form-group">
+        <textarea class="form-input" id="msgInput" rows="4" placeholder="Describe your project..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="handleSubmit()">Send Message →</button>
+      <div class="success-msg" id="successMsg">✓ Message sent! I'll reply within 24 hours.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>© 2025 M Muneeb Ishaq · All rights reserved</span>
+    <a href="https://www.upwork.com/freelancers/~01c97cff36c609e0eb" target="_blank">Upwork Profile ↗</a>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', function() {
+  var mn = document.getElementById('mobileNav');
+  mn.style.display = mn.style.display === 'block' ? 'none' : 'block';
+});
+document.querySelectorAll('.mobile-nav a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('mobileNav').style.display = 'none';
+  });
+});
+
+// Contact form
+function handleSubmit() {
+  var name = document.getElementById('nameInput').value.trim();
+  var email = document.getElementById('emailInput').value.trim();
+  var msg = document.getElementById('msgInput').value.trim();
+  if (!name || !email || !msg) {
+    alert('Please fill in all fields.');
+    return;
+  }
+  document.getElementById('successMsg').style.display = 'block';
+  document.getElementById('nameInput').value = '';
+  document.getElementById('emailInput').value = '';
+  document.getElementById('msgInput').value = '';
+}
+</script>
+</body>
+</html>
